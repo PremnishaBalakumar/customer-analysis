@@ -1,0 +1,4 @@
+data/customer_segmentation/transactions_merged.csv
+data/cleaned/causal_data_cleaned.csv
+data/raw/transaction_data.csv
+data/cleaned/transaction_data_cleaned.csv
