@@ -1,0 +1,34 @@
+Provenance log started: 2025-10-25 18:41:45
+2025-10-25 18:41:45 - Loaded campaign_desc.csv, shape: (30, 4)
+2025-10-25 18:41:45 - Loaded campaign_table.csv, shape: (7208, 3)
+2025-10-25 18:41:45 - Loaded coupon.csv, shape: (124548, 3)
+2025-10-25 18:41:45 - Loaded coupon_redempt.csv, shape: (2318, 4)
+2025-10-25 18:42:17 - Loaded causal_data.csv, shape: (36786524, 5)
+2025-10-25 18:42:17 - Loaded product.csv, shape: (92353, 7)
+2025-10-25 18:42:22 - Loaded transaction_data.csv, shape: (2595732, 12)
+2025-10-25 18:42:22 - Loaded hh_demographic.csv, shape: (801, 8)
+2025-10-25 18:42:22 - No duplicates found in campaign_desc.csv.
+2025-10-25 18:42:22 - No duplicates found in campaign_table.csv.
+2025-10-25 18:42:22 - Removed 5164 duplicate rows (4.15%) from coupon.csv.
+2025-10-25 18:42:23 - No duplicates found in coupon_redempt.csv.
+2025-10-25 18:43:01 - No duplicates found in causal_data.csv.
+2025-10-25 18:48:40 - No duplicates found in product.csv.
+2025-10-25 18:48:41 - product.csv: DEPARTMENT -> Missing=15, Missing Per=0.016242027871319828
+2025-10-25 18:48:41 - product.csv: COMMODITY_DESC -> Missing=15, Missing Per=0.016242027871319828
+2025-10-25 18:48:41 - product.csv: SUB_COMMODITY_DESC -> Missing=15, Missing Per=0.016242027871319828
+2025-10-25 18:48:41 - product.csv: CURR_SIZE_OF_PRODUCT -> Missing=30607, Missing Per=33.14131647049906
+2025-10-25 18:49:04 - No duplicates found in transaction_data.csv.
+2025-10-25 18:49:39 - No duplicates found in hh_demographic.csv.
+2025-10-25 18:49:39 - hh_demographic.csv: MARITAL_STATUS_CODE -> Missing=344, Missing Per=42.94631710362047
+2025-10-25 18:49:39 - hh_demographic.csv: HOMEOWNER_DESC -> Missing=233, Missing Per=29.08863920099875
+2025-10-25 18:49:39 - hh_demographic.csv: HH_COMP_DESC -> Missing=73, Missing Per=9.113607990012484
+2025-10-25 18:49:39 - hh_demographic.csv: KID_CATEGORY_DESC -> Missing=558, Missing Per=69.66292134831461
+2025-10-25 18:49:39 - Filtered 18917 invalid transactions with non-positive quantity or sales value.
+2025-10-25 18:49:40 - Saved cleaned dataset: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/cleaned/campaign_desc_cleaned.csv
+2025-10-25 18:49:40 - Saved cleaned dataset: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/cleaned/campaign_table_cleaned.csv
+2025-10-25 18:49:40 - Saved cleaned dataset: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/cleaned/coupon_cleaned.csv
+2025-10-25 18:49:40 - Saved cleaned dataset: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/cleaned/coupon_redempt_cleaned.csv
+2025-10-25 18:53:30 - Saved cleaned dataset: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/cleaned/causal_data_cleaned.csv
+2025-10-25 18:53:32 - Saved cleaned dataset: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/cleaned/product_cleaned.csv
+2025-10-25 18:54:20 - Saved cleaned dataset: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/cleaned/transaction_data_cleaned.csv
+2025-10-25 18:54:20 - Saved cleaned dataset: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/cleaned/hh_demographic_cleaned.csv
