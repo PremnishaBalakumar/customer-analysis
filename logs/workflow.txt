@@ -1,0 +1,85 @@
+=== Log started at 2025-11-14 15:14:07.041773 ===
+[2025-11-14 15:14:07] 🚀 Starting full customer analysis workflow.
+[2025-11-14 15:14:07] Step 1: Cleaning raw datasets...
+[2025-11-14 15:14:07] Starting data cleaning. Raw path: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/raw
+[2025-11-14 15:14:07] Loaded campaign_desc.csv (shape: (30, 4))
+[2025-11-14 15:14:07] Loaded campaign_table.csv (shape: (7208, 3))
+[2025-11-14 15:14:07] Loaded coupon.csv (shape: (124548, 3))
+[2025-11-14 15:14:07] Loaded coupon_redempt.csv (shape: (2318, 4))
+[2025-11-14 15:14:17] Loaded causal_data.csv (shape: (36786524, 5))
+[2025-11-14 15:14:17] Loaded product.csv (shape: (92353, 7))
+[2025-11-14 15:14:19] Loaded transaction_data.csv (shape: (2595732, 12))
+[2025-11-14 15:14:19] Loaded hh_demographic.csv (shape: (801, 8))
+[2025-11-14 15:14:19] === Cleaning campaign_desc.csv ===
+[2025-11-14 15:14:19] Raw shape: (30, 4)
+[2025-11-14 15:14:19] campaign_desc.csv: No duplicates.
+[2025-11-14 15:14:19] Cleaned shape: (30, 4)
+[2025-11-14 15:14:19] === Cleaning campaign_table.csv ===
+[2025-11-14 15:14:19] Raw shape: (7208, 3)
+[2025-11-14 15:14:19] campaign_table.csv: No duplicates.
+[2025-11-14 15:14:19] Cleaned shape: (7208, 3)
+[2025-11-14 15:14:19] === Cleaning coupon.csv ===
+[2025-11-14 15:14:19] Raw shape: (124548, 3)
+[2025-11-14 15:14:19] coupon.csv: Removed 5164 duplicates (4.15%).
+[2025-11-14 15:14:19] Cleaned shape: (119384, 3)
+[2025-11-14 15:14:19] === Cleaning coupon_redempt.csv ===
+[2025-11-14 15:14:19] Raw shape: (2318, 4)
+[2025-11-14 15:14:19] coupon_redempt.csv: No duplicates.
+[2025-11-14 15:14:19] Cleaned shape: (2318, 4)
+[2025-11-14 15:14:19] === Cleaning causal_data.csv ===
+[2025-11-14 15:14:19] Raw shape: (36786524, 5)
+[2025-11-14 15:14:39] causal_data.csv: No duplicates.
+[2025-11-14 15:16:35] Cleaned shape: (36786524, 5)
+[2025-11-14 15:16:35] === Cleaning product.csv ===
+[2025-11-14 15:16:35] Raw shape: (92353, 7)
+[2025-11-14 15:16:35] product.csv: No duplicates.
+[2025-11-14 15:16:36] product.csv: DEPARTMENT has 15 missing (0.02%).
+[2025-11-14 15:16:36] product.csv: COMMODITY_DESC has 15 missing (0.02%).
+[2025-11-14 15:16:36] product.csv: SUB_COMMODITY_DESC has 15 missing (0.02%).
+[2025-11-14 15:16:36] product.csv: CURR_SIZE_OF_PRODUCT has 30607 missing (33.14%).
+[2025-11-14 15:16:36] Cleaned shape: (92353, 7)
+[2025-11-14 15:16:36] === Cleaning transaction_data.csv ===
+[2025-11-14 15:16:36] Raw shape: (2595732, 12)
+[2025-11-14 15:16:49] transaction_data.csv: No duplicates.
+[2025-11-14 15:17:06] Cleaned shape: (2595732, 12)
+[2025-11-14 15:17:07] transaction_data.csv: Removed 18917 invalid rows.
+[2025-11-14 15:17:07] === Cleaning hh_demographic.csv ===
+[2025-11-14 15:17:07] Raw shape: (801, 8)
+[2025-11-14 15:17:07] hh_demographic.csv: No duplicates.
+[2025-11-14 15:17:07] hh_demographic.csv: MARITAL_STATUS_CODE has 344 missing (42.95%).
+[2025-11-14 15:17:07] hh_demographic.csv: HOMEOWNER_DESC has 233 missing (29.09%).
+[2025-11-14 15:17:07] hh_demographic.csv: HH_COMP_DESC has 73 missing (9.11%).
+[2025-11-14 15:17:07] hh_demographic.csv: KID_CATEGORY_DESC has 558 missing (69.66%).
+[2025-11-14 15:17:07] Cleaned shape: (801, 8)
+[2025-11-14 15:17:07] Saved cleaned dataset: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/customer_segmentation/cleaned/campaign_desc_cleaned.csv
+[2025-11-14 15:17:07] Saved cleaned dataset: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/customer_segmentation/cleaned/campaign_table_cleaned.csv
+[2025-11-14 15:17:07] Saved cleaned dataset: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/customer_segmentation/cleaned/coupon_cleaned.csv
+[2025-11-14 15:17:07] Saved cleaned dataset: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/customer_segmentation/cleaned/coupon_redempt_cleaned.csv
+[2025-11-14 15:18:14] Saved cleaned dataset: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/customer_segmentation/cleaned/causal_data_cleaned.csv
+[2025-11-14 15:18:14] Saved cleaned dataset: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/customer_segmentation/cleaned/product_cleaned.csv
+[2025-11-14 15:18:30] Saved cleaned dataset: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/customer_segmentation/cleaned/transaction_data_cleaned.csv
+[2025-11-14 15:18:30] Saved cleaned dataset: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/customer_segmentation/cleaned/hh_demographic_cleaned.csv
+[2025-11-14 15:18:30] Data cleaning completed successfully.
+[2025-11-14 15:18:30] ✔ Step 1 complete. Cleaned data saved to: data/cleaned/
+[2025-11-14 15:18:30] Step 2: Running customer analysis pipeline...
+[2025-11-14 15:18:30] === Customer Analysis Pipeline Started ===
+[2025-11-14 15:18:32] Loaded transaction_data_cleaned.csv with shape (2576815, 12)
+[2025-11-14 15:18:32] Loaded product_cleaned.csv with shape (92353, 7)
+[2025-11-14 15:18:32] Loaded hh_demographic_cleaned.csv with shape (801, 8)
+[2025-11-14 15:18:32] Merging datasets...
+[2025-11-14 15:18:33] After merging demographics: (2576815, 19)
+[2025-11-14 15:18:34] After merging products: (2576815, 25)
+[2025-11-14 15:18:36] Dropped 1747722 rows with missing critical demographics (67.82%)
+[2025-11-14 15:18:36] Aggregating household-level metrics...
+[2025-11-14 15:18:37] Aggregated 457 households
+[2025-11-14 15:18:37] Dropped 295 households with missing demographics (64.55%)
+[2025-11-14 15:18:37] Saved pie chart: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/customer_segmentation/figures/age_desc_piechart.png
+[2025-11-14 15:18:37] Saved pie chart: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/customer_segmentation/figures/marital_status_code_piechart.png
+[2025-11-14 15:18:37] Saved pie chart: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/customer_segmentation/figures/income_desc_piechart.png
+[2025-11-14 15:18:37] Saved pie chart: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/customer_segmentation/figures/homeowner_desc_piechart.png
+[2025-11-14 15:18:37] Saved pie chart: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/customer_segmentation/figures/hh_comp_desc_piechart.png
+[2025-11-14 15:18:37] Saved pie chart: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/customer_segmentation/figures/household_size_desc_piechart.png
+[2025-11-14 15:18:37] Saved pie chart: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/customer_segmentation/figures/kid_category_desc_piechart.png
+[2025-11-14 15:18:37] === Customer Analysis Pipeline Completed ===
+[2025-11-14 15:18:38] ✔ Step 2 complete. Results saved to: data/customer_segmentation/
+[2025-11-14 15:18:38] 🎉 Workflow completed successfully!
