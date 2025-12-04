@@ -20,6 +20,10 @@ Refer to the [metadata documentation](./docs/metadata.md) for information on the
 ## Workflow
 View the [workflow provenance](./docs/workflow_provenance.md) for a detailed overview of the project's data processing steps
 
+## Automated pipeline 
+
+Run all the steps using `python3 -m src.customer_workflow`
+
 ## Folder Structure
 See `/data`, `/notebooks`, `/scripts`, and `/docs` for workflow components.
 
