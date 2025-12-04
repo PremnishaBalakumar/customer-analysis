@@ -96,3 +96,18 @@ Implemented in **Python Jupyter notebooks**:
   - [`01_data_exploration.ipynb`](../notebooks/01_data_exploration.ipynb) → loading and verifying raw data
   - [`02_data_cleaning.ipynb`](../notebooks/02_data_cleaning.ipynb) →  potentially making data analysis ready 
   - [`03_processing_analysis.ipynb`](../notebooks/customer_segmentation/03_processing_analysis.ipynb) → customer segmentation processing, analysis and visualisation
+
+Workflow:
+It can be run as a workflow `python3 -m src.customer_workflow` which runs all the steps (cleaning, analysis and visualisation) in an automated fashion
+
+Logs:
+`logs/workflow.txt` — workflow run log 
+
+Each entry in the logs includes an approximate timestamp and a short description (example entries):
+```
+=== Log started at 2025-11-14 15:14:07.041773 ===
+[2025-11-14 15:14:07] 🚀 Starting full customer analysis workflow.
+[2025-11-14 15:14:07] Step 1: Cleaning raw datasets...
+[2025-11-14 15:14:07] Starting data cleaning. Raw path: /Users/aravind/Premnisha/MS/data_curation/customer-analysis/data/raw
+[2025-11-14 15:14:07] Loaded campaign_desc.csv (shape: (30, 4))
+```
