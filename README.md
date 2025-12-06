@@ -9,6 +9,8 @@ This project curates and analyzes the **Dunnhumby Complete Journey** dataset to 
 - Analyse campaign effectiveness
 - Document reproducible curation workflow
 
+[Final report](./docs/final_report.pdf)
+
 ## Data Source
 - **Dataset**: Dunnhumby – The Complete Journey  
 - **Source**: [Kaggle](https://www.kaggle.com/datasets/frtgnn/dunnhumby-the-complete-journey)  
