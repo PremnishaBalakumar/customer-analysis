@@ -27,9 +27,11 @@ View the [workflow provenance](./docs/workflow_provenance.md) for a detailed ove
 ### Requirements
 - Python 3.10+ (tested)
 - Create virtual env:
+```
   python -m venv .venv
   source .venv/bin/activate
   pip install -r requirements.txt
+```
 
 ### Data
 - Obtain raw data: Dunnhumby — The Complete Journey (Kaggle)
