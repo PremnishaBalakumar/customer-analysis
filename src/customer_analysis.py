@@ -5,10 +5,10 @@
 import os
 import pandas as pd
 import matplotlib
-matplotlib.use("Agg")  # Prevent Tkinter backend errors
+matplotlib.use("Agg") 
 import matplotlib.pyplot as plt
 
-from src.utils.log_util import init_log, log
+from src.utils.log_util import log
 
 # --------------------------------------------------
 # Paths
@@ -18,7 +18,7 @@ PROJECT_ROOT = os.path.abspath(os.getcwd())
 PROCESSED_DATA_DIR = os.path.join(PROJECT_ROOT, "data", "customer_segmentation")
 CLEANED_DATA_DIR = os.path.join(PROCESSED_DATA_DIR, "cleaned")
 FIGURES_DIR = os.path.join(PROCESSED_DATA_DIR, "figures")
-
+AGG_FIGURES_DIR = os.path.join(FIGURES_DIR, "agg_metrics")
 os.makedirs(CLEANED_DATA_DIR, exist_ok=True)
 os.makedirs(FIGURES_DIR, exist_ok=True)
 
@@ -76,7 +76,7 @@ def merge_datasets(transactions: pd.DataFrame,
 
 def clean_demographics(df: pd.DataFrame) -> pd.DataFrame:
     critical_cols = ['MARITAL_STATUS_CODE', 'INCOME_DESC']
-    missing_values = ["Unknown", "None", "NONE", "None/Unknown", "", "NaN"]
+    missing_values = ["Unknown", ""]
 
     initial_rows = df.shape[0]
     mask_missing = df[critical_cols].apply(
@@ -118,6 +118,10 @@ def aggregate_households(df: pd.DataFrame) -> pd.DataFrame:
 
 # --------------------------------------------------
 # Merge Aggregated Data with Demographics
+# NOTE:
+    # - KID_CATEGORY_DESC is intentionally *not* treated as a required field.
+    #   Values like "None" or "Unknown" in this column do not necessarily indicate 
+    #   missing data.
 # --------------------------------------------------
 
 def merge_household_demographics(agg: pd.DataFrame, df: pd.DataFrame) -> pd.DataFrame:
@@ -127,8 +131,16 @@ def merge_household_demographics(agg: pd.DataFrame, df: pd.DataFrame) -> pd.Data
     ]
     merged = agg.merge(df[demo_cols].drop_duplicates(), on="household_key", how="left")
 
-    missing_values = ["Unknown", "NULL", "nan", "None", "NA", "Not Available", " "]
-    mask_missing = merged[demo_cols[1:]].apply(
+    missing_values = ["Unknown", "NULL", "nan", "NA", "Not Available", " "]
+    required_cols = [
+        "AGE_DESC",
+        "MARITAL_STATUS_CODE",
+        "INCOME_DESC",
+        "HOMEOWNER_DESC", 
+        "HOUSEHOLD_SIZE_DESC"
+    ]
+
+    mask_missing = merged[required_cols].apply(
         lambda col: col.isna() | col.astype(str).str.strip().isin(missing_values)
     ).any(axis=1)
 
@@ -139,7 +151,7 @@ def merge_household_demographics(agg: pd.DataFrame, df: pd.DataFrame) -> pd.Data
     return merged
 
 # --------------------------------------------------
-# Generate Pie Charts
+# Generate Charts
 # --------------------------------------------------
 
 def generate_demographic_piecharts(df: pd.DataFrame, output_dir: str = FIGURES_DIR):
@@ -154,10 +166,48 @@ def generate_demographic_piecharts(df: pd.DataFrame, output_dir: str = FIGURES_D
         plt.pie(counts.values, labels=counts.index, autopct='%1.1f%%', startangle=140)
         plt.title(f"Distribution of {col.replace('_', ' ')}", fontsize=12)
         plt.tight_layout()
-        outpath = os.path.join(output_dir, f"{col.lower()}_piechart.png")
+        filename=f"{col.lower()}_piechart.png"
+        outpath = os.path.join(output_dir, filename)
         plt.savefig(outpath)
         plt.close()
-        log(f"Saved pie chart: {outpath}")
+        log(f"Saved pie chart: {filename}")
+
+def generate_aggregate_visuals(df):
+    plot_metric_vs_category(df, "total_spent", "INCOME_DESC")
+    plot_metric_vs_category(df, "total_spent", "AGE_DESC")
+    plot_metric_vs_category(df, "num_transactions", "INCOME_DESC")
+    plot_metric_vs_category(df, "num_transactions", "AGE_DESC")
+
+def plot_metric_vs_category(df, metric, category, output_dir=AGG_FIGURES_DIR):
+    os.makedirs(output_dir, exist_ok=True)
+
+    if metric not in df.columns or category not in df.columns:
+        print(f"Missing required column: {metric} or {category}")
+        return
+
+    df_clean = df.dropna(subset=[category, metric])
+
+    summary = (
+        df_clean.groupby(category)[metric]
+        .mean()
+        .sort_index()
+    )
+
+    plt.figure(figsize=(8,5))
+    plt.bar(summary.index, summary.values)
+
+    plt.xticks(rotation=45, ha="right")
+    plt.xlabel(category.replace("_", " ").title())
+    plt.ylabel(metric.replace("_", " ").title())
+    plt.title(f"{metric.replace('_',' ').title()} by {category.replace('_',' ').title()}")
+
+    plt.tight_layout()
+
+    filename = f"{metric}_vs_{category}.png".replace(" ", "_").lower()
+    plt.savefig(os.path.join(output_dir, filename))
+    plt.close()
+
+    log(f"Saved aggregated metric chart: {filename}")
 
 # --------------------------------------------------
 # End-to-End Pipeline
@@ -165,7 +215,6 @@ def generate_demographic_piecharts(df: pd.DataFrame, output_dir: str = FIGURES_D
 
 def run_customer_analysis():
     log("=== Customer Analysis Pipeline Started ===")
-    # init_log(os.path.join(PROJECT_ROOT, "logs"), prefix="workflow")
 
     datasets = load_cleaned_datasets(CLEANED_DATA_DIR)
     merged = merge_datasets(datasets["transactions"], datasets["products"], datasets["demographics"])
@@ -173,6 +222,7 @@ def run_customer_analysis():
     agg = aggregate_households(cleaned)
     final = merge_household_demographics(agg, cleaned)
     generate_demographic_piecharts(final)
-
+    generate_aggregate_visuals(final)
+    
     log("=== Customer Analysis Pipeline Completed ===")
     return final

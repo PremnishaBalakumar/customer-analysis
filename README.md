@@ -35,6 +35,9 @@ View the [workflow provenance](./docs/workflow_provenance.md) for a detailed ove
 - Obtain raw data: Dunnhumby — The Complete Journey (Kaggle)
 - Place raw CSVs in `data/raw/` (filenames: transaction_data.csv, hh_demographic.csv, product.csv, coupon.csv, etc.)
 
+#### Data use and ethics
+Data were obtained from Kaggle (Dunnhumby — The Complete Journey). We do not redistribute raw files. Household IDs are anonymized; no PII is present. Use of the data follows Kaggle's terms of service and any downstream redistribution is restricted.
+
 ### Run pipeline
 `python3 -m src.customer_workflow`
 

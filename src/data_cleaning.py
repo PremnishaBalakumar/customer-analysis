@@ -6,7 +6,7 @@ from src.utils.log_util import init_log, log
 # Global constants
 # -------------------------------------------
 
-MISSING_VALUES = ["Unknown", "None", "NONE", "None/Unknown", "", "U", "NaN"]
+MISSING_VALUES = ["Unknown", "", "U", "NaN"]
 
 FILES = [
     "campaign_desc.csv", "campaign_table.csv", "coupon.csv",
